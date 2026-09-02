@@ -1,4 +1,5 @@
-import { createBrowserRouter, Outlet } from "react-router";
+import { createBrowserRouter, Outlet, useLocation } from "react-router";
+import { useEffect } from "react";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -22,9 +23,16 @@ import Terms from "./pages/legal/Terms";
 import Privacy from "./pages/legal/Privacy";
 import NotFound from "./pages/NotFound";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
 function Root() {
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF6F0]">
+      <ScrollToTop />
       <Nav />
       <main className="flex-1">
         <Outlet />
