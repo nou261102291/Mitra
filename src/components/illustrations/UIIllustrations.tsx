@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 function useAnimLoop(steps: number, stepMs: number, holdMs: number) {
   const ref = useRef<HTMLDivElement>(null);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(steps);
   const [active, setActive] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -228,9 +228,9 @@ export function DuringIllustration() {
           Notes · 14 min
         </text>
 
-        {/* Status label */}
+        {/* Status label — right-aligned to panel edge */}
         <g style={sh(step, 1)}>
-          <text x="342" y="48" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9" fill="rgba(27,20,15,0.35)">
+          <text x="450" y="48" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9" fill="rgba(27,20,15,0.35)" textAnchor="end">
             {step >= 5 ? "Enhancing..." : "Transcribing..."}
           </text>
         </g>
