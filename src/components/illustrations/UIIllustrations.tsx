@@ -1,46 +1,5 @@
 // Animated UI illustrations for How It Works sections
-import { useEffect, useRef, useState } from "react";
-
-function useAnimLoop(steps: number, stepMs: number, holdMs: number) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [step, setStep] = useState(steps);
-  const [active, setActive] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setActive(true); io.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!active) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStep(steps);
-      return;
-    }
-    function go(s: number) {
-      if (s < steps) {
-        timer.current = setTimeout(() => { setStep(s + 1); go(s + 1); }, stepMs);
-      } else {
-        timer.current = setTimeout(() => { setStep(0); go(0); }, holdMs);
-      }
-    }
-    go(0);
-    return () => clearTimeout(timer.current);
-  }, [active]);
-
-  return { ref, step, active };
-}
-
-function sh(step: number, n: number): React.CSSProperties {
-  return { opacity: step >= n ? 1 : 0, transition: "opacity 0.45s ease" };
-}
+import { useAnimLoop, sh } from "./animUtils";
 
 // ── Before ──────────────────────────────────────────────────────────────────
 // 9 steps × 490 ms = 4.4 s play, 6 s hold → ~10.4 s loop

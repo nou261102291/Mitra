@@ -54,7 +54,7 @@ export default function Comparison({ competitor }: { competitor: string }) {
         <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">
           Mitra vs. {config.competitor}
         </p>
-        <h1 className="font-[family-name:var(--font-display)] text-[48px] md:text-[58px] font-bold text-[#1B140F] leading-[1.1] tracking-tight mb-6">
+        <h1 className="text-[48px] md:text-[58px] font-bold text-[#1B140F] leading-[1.1] tracking-tight mb-6" style={{ fontFamily: "'Fraunces', serif" }}>
           {config.tagline}
         </h1>
       </section>
@@ -103,7 +103,7 @@ export default function Comparison({ competitor }: { competitor: string }) {
           </div>
 
           <p className="text-center text-[13px] text-[rgba(27,20,15,0.4)] mt-5">
-            Information accurate as of November 2024. We update this page regularly — if anything here is wrong, <a href="/contact" className="underline">let us know</a>.
+            Information accurate as of September 2026. We update this page regularly — if anything here is wrong, <a href="/contact" className="underline">let us know</a>.
           </p>
         </div>
       </section>

@@ -1,50 +1,5 @@
 // Animated product illustrations for the "Built for Africa" section
-import { useEffect, useRef, useState } from "react";
-
-function useAnimLoop(steps: number, stepMs: number, holdMs: number) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [step, setStep] = useState(steps);
-  const [active, setActive] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setActive(true); io.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!active) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStep(steps);
-      return;
-    }
-    function go(s: number) {
-      if (s < steps) {
-        timer.current = setTimeout(() => { setStep(s + 1); go(s + 1); }, stepMs);
-      } else {
-        timer.current = setTimeout(() => { setStep(0); go(0); }, holdMs);
-      }
-    }
-    go(0);
-    return () => clearTimeout(timer.current);
-  }, [active]);
-
-  return { ref, step };
-}
-
-function sh(step: number, n: number): React.CSSProperties {
-  return {
-    opacity: step >= n ? 1 : 0,
-    transform: step >= n ? "translateY(0)" : "translateY(5px)",
-    transition: "opacity 0.4s ease, transform 0.4s ease",
-  };
-}
+import { useAnimLoop, sh } from "./animUtils";
 
 // ── PaymentIllustration ──────────────────────────────────────────────────────
 // Shows a Paystack-style local payment being completed
@@ -182,11 +137,10 @@ export function WhatsAppIllustration() {
           <text x="378" y="136" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9" fill="rgba(136,231,136,0.7)" textAnchor="middle">Export to WhatsApp</text>
         </g>
 
-        {/* WhatsApp message bubble building — steps 2-6 */}
+        {/* WhatsApp message bubble — full size, lines fade in one by one */}
         <g style={sh(step, 2)}>
-          <rect x="24" y="108" width="280" height={Math.min((step - 1) * 22 + 16, 148)} rx="12" fill="white"
-            style={{ transition: "height 0.4s ease" }}/>
-          {WA_LINES.slice(0, Math.max(0, step - 1)).map((line, i) => {
+          <rect x="24" y="108" width="280" height="148" rx="12" fill="white"/>
+          {WA_LINES.map((line, i) => {
             const isBold = line.startsWith("*") || line.startsWith("📋");
             const isItalic = line.startsWith("_");
             const cleanLine = line.replace(/\*/g, "").replace(/_/g, "");
@@ -206,13 +160,9 @@ export function WhatsAppIllustration() {
               </text>
             );
           })}
-          {/* Checkmarks */}
-          {step >= 6 && (
-            <text x="298" y="254" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="11" fill="#4FC3F7">✓✓</text>
-          )}
-          {step >= 6 && (
-            <text x="36" y="268" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9" fill="rgba(27,20,15,0.35)">09:47</text>
-          )}
+          {/* Checkmarks + timestamp */}
+          <text x="298" y="254" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="11" fill="#4FC3F7" style={sh(step, 7)}>✓✓</text>
+          <text x="36" y="268" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9" fill="rgba(27,20,15,0.35)" style={sh(step, 7)}>09:47</text>
         </g>
       </svg>
     </div>

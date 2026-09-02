@@ -7,6 +7,8 @@ const columns = [
     links: [
       { label: "How It Works", href: "/how-it-works" },
       { label: "Meeting Assistant", href: "/features/meeting-assistant" },
+      { label: "Mitra Chat", href: "/features/mitra-chat" },
+      { label: "Lens", href: "/features/lens" },
       { label: "AI Notes & Follow-ups", href: "/features/ai-notes" },
       { label: "Integrations", href: "/features/integrations" },
       { label: "Download", href: "/download" },
@@ -68,17 +70,12 @@ export default function Footer() {
             <p className="text-[13px] text-[rgba(253,249,244,0.55)] leading-relaxed max-w-[180px]">
               The colleague who's always one step ahead of the room.
             </p>
-            <div className="flex gap-3 mt-5">
-              {["𝕏", "in", "▶"].map((s, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-8 h-8 rounded-lg border border-[rgba(253,249,244,0.15)] flex items-center justify-center text-[11px] text-[rgba(253,249,244,0.5)] hover:text-[#88E788] hover:border-[rgba(136,231,136,0.35)] transition-colors"
-                >
-                  {s}
-                </a>
-              ))}
-            </div>
+            <Link
+              to="/contact"
+              className="inline-block mt-5 text-[13px] text-[rgba(253,249,244,0.45)] hover:text-[#88E788] transition-colors"
+            >
+              Get in touch →
+            </Link>
           </div>
 
           {columns.map((col) => (

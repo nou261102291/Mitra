@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import CTABand from "../components/CTABand";
+import RevealSection from "../components/RevealSection";
 import { BeforeIllustration, DuringIllustration, AfterIllustration } from "../components/illustrations/UIIllustrations";
 import { PaymentIllustration } from "../components/illustrations/AfricaIllustrations";
 
@@ -203,35 +204,6 @@ function HeroMockup() {
           <div className="px-5 py-2.5 border-t border-[rgba(27,20,15,0.06)] text-[11px] text-[rgba(27,20,15,0.35)]">Auto-drafted from your notes · Edit before sending</div>
         </div>
       </div>
-    </div>
-  );
-}
-
-// ── Utilities ─────────────────────────────────────────────────────────────────
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return { ref, visible };
-}
-
-function RevealSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const { ref, visible } = useReveal();
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
-    >
-      {children}
     </div>
   );
 }

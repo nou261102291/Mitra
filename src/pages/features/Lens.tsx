@@ -52,50 +52,7 @@ function ApertureIcon({
 }
 
 // ── Animation helpers ─────────────────────────────────────────────────────────
-function useAnimLoop(steps: number, stepMs: number, holdMs: number) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [step, setStep] = useState(steps);
-  const [active, setActive] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setActive(true); io.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!active) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStep(steps);
-      return;
-    }
-    function go(s: number) {
-      if (s < steps) {
-        timer.current = setTimeout(() => { setStep(s + 1); go(s + 1); }, stepMs);
-      } else {
-        timer.current = setTimeout(() => { setStep(0); go(0); }, holdMs);
-      }
-    }
-    go(0);
-    return () => clearTimeout(timer.current);
-  }, [active]);
-
-  return { ref, step };
-}
-
-function sh(step: number, n: number): React.CSSProperties {
-  return {
-    opacity: step >= n ? 1 : 0,
-    transform: step >= n ? "translateY(0)" : "translateY(5px)",
-    transition: "opacity 0.4s ease, transform 0.4s ease",
-  };
-}
+import { useAnimLoop, sh } from "../../components/illustrations/animUtils";
 
 // ── Hero Lens illustration ────────────────────────────────────────────────────
 // 10 steps × 650 ms = 6.5 s play, 4 s hold → ~10.5 s loop

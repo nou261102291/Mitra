@@ -1,34 +1,48 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, Outlet, useLocation } from "react-router";
 import { useEffect } from "react";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+
+// Eagerly load the shell and home page for fastest initial paint
 import Home from "./pages/Home";
-import HowItWorks from "./pages/HowItWorks";
-import MeetingAssistant from "./pages/features/MeetingAssistant";
-import AiNotes from "./pages/features/AiNotes";
-import Integrations from "./pages/features/Integrations";
-import MitraChat from "./pages/features/MitraChat";
-import Lens from "./pages/features/Lens";
-import UseCasePage from "./pages/use-cases/UseCasePage";
-import Pricing from "./pages/Pricing";
-import Enterprise from "./pages/Enterprise";
-import Security from "./pages/Security";
-import Comparison from "./pages/vs/Comparison";
-import About from "./pages/About";
-import Careers from "./pages/Careers";
-import Blog from "./pages/Blog";
-import Help from "./pages/Help";
-import Contact from "./pages/Contact";
-import Download from "./pages/Download";
-import SignIn from "./pages/SignIn";
-import Terms from "./pages/legal/Terms";
-import Privacy from "./pages/legal/Privacy";
-import NotFound from "./pages/NotFound";
+
+// Lazy-load all other pages so the initial bundle stays lean
+const HowItWorks       = lazy(() => import("./pages/HowItWorks"));
+const MeetingAssistant = lazy(() => import("./pages/features/MeetingAssistant"));
+const AiNotes          = lazy(() => import("./pages/features/AiNotes"));
+const Integrations     = lazy(() => import("./pages/features/Integrations"));
+const MitraChat        = lazy(() => import("./pages/features/MitraChat"));
+const Lens             = lazy(() => import("./pages/features/Lens"));
+const UseCasePage      = lazy(() => import("./pages/use-cases/UseCasePage"));
+const Pricing          = lazy(() => import("./pages/Pricing"));
+const Enterprise       = lazy(() => import("./pages/Enterprise"));
+const Security         = lazy(() => import("./pages/Security"));
+const Comparison       = lazy(() => import("./pages/vs/Comparison"));
+const About            = lazy(() => import("./pages/About"));
+const Careers          = lazy(() => import("./pages/Careers"));
+const Blog             = lazy(() => import("./pages/Blog"));
+const Help             = lazy(() => import("./pages/Help"));
+const Contact          = lazy(() => import("./pages/Contact"));
+const Download         = lazy(() => import("./pages/Download"));
+const SignIn           = lazy(() => import("./pages/SignIn"));
+const Terms            = lazy(() => import("./pages/legal/Terms"));
+const Privacy          = lazy(() => import("./pages/legal/Privacy"));
+const NotFound         = lazy(() => import("./pages/NotFound"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
+}
+
+// Minimal skeleton shown while a lazy page loads
+function PageFallback() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="w-6 h-6 rounded-full border-2 border-[#88E788] border-t-transparent animate-spin" />
+    </div>
+  );
 }
 
 function Root() {
@@ -37,7 +51,9 @@ function Root() {
       <ScrollToTop />
       <Nav />
       <main className="flex-1">
-        <Outlet />
+        <Suspense fallback={<PageFallback />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>
@@ -50,31 +66,31 @@ export const router = createBrowserRouter([
     Component: Root,
     children: [
       { index: true, Component: Home },
-      { path: "how-it-works", Component: HowItWorks },
-      { path: "features/meeting-assistant", Component: MeetingAssistant },
-      { path: "features/ai-notes", Component: AiNotes },
-      { path: "features/integrations", Component: Integrations },
-      { path: "features/mitra-chat", Component: MitraChat },
-      { path: "features/lens", Component: Lens },
-      { path: "use-cases/founders", element: <UseCasePage persona="founders" /> },
-      { path: "use-cases/sales", element: <UseCasePage persona="sales" /> },
-      { path: "use-cases/consultants", element: <UseCasePage persona="consultants" /> },
-      { path: "use-cases/ngo", element: <UseCasePage persona="ngo" /> },
-      { path: "pricing", Component: Pricing },
-      { path: "enterprise", Component: Enterprise },
-      { path: "security", Component: Security },
-      { path: "vs/granola", element: <Comparison competitor="granola" /> },
-      { path: "vs/otter", element: <Comparison competitor="otter" /> },
-      { path: "about", Component: About },
-      { path: "careers", Component: Careers },
-      { path: "blog", Component: Blog },
-      { path: "help", Component: Help },
-      { path: "contact", Component: Contact },
-      { path: "download", Component: Download },
-      { path: "sign-in", Component: SignIn },
-      { path: "legal/terms", Component: Terms },
-      { path: "legal/privacy", Component: Privacy },
-      { path: "*", Component: NotFound },
+      { path: "how-it-works",               element: <HowItWorks /> },
+      { path: "features/meeting-assistant",  element: <MeetingAssistant /> },
+      { path: "features/ai-notes",           element: <AiNotes /> },
+      { path: "features/integrations",       element: <Integrations /> },
+      { path: "features/mitra-chat",         element: <MitraChat /> },
+      { path: "features/lens",               element: <Lens /> },
+      { path: "use-cases/founders",          element: <UseCasePage persona="founders" /> },
+      { path: "use-cases/sales",             element: <UseCasePage persona="sales" /> },
+      { path: "use-cases/consultants",       element: <UseCasePage persona="consultants" /> },
+      { path: "use-cases/ngo",               element: <UseCasePage persona="ngo" /> },
+      { path: "pricing",                     element: <Pricing /> },
+      { path: "enterprise",                  element: <Enterprise /> },
+      { path: "security",                    element: <Security /> },
+      { path: "vs/granola",                  element: <Comparison competitor="granola" /> },
+      { path: "vs/otter",                    element: <Comparison competitor="otter" /> },
+      { path: "about",                       element: <About /> },
+      { path: "careers",                     element: <Careers /> },
+      { path: "blog",                        element: <Blog /> },
+      { path: "help",                        element: <Help /> },
+      { path: "contact",                     element: <Contact /> },
+      { path: "download",                    element: <Download /> },
+      { path: "sign-in",                     element: <SignIn /> },
+      { path: "legal/terms",                 element: <Terms /> },
+      { path: "legal/privacy",               element: <Privacy /> },
+      { path: "*",                           element: <NotFound /> },
     ],
   },
 ]);
