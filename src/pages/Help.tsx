@@ -69,7 +69,7 @@ export default function Help() {
               <ul className="flex flex-col gap-2">
                 {cat.articles.map((a) => (
                   <li key={a}>
-                    <a href="#" className="text-[14px] text-[rgba(27,20,15,0.7)] hover:text-[#C9542C] transition-colors">{a}</a>
+                    <a href="#" className="text-[14px] text-[rgba(27,20,15,0.7)] hover:text-[#1B2A4A] transition-colors">{a}</a>
                   </li>
                 ))}
               </ul>
@@ -80,7 +80,7 @@ export default function Help() {
         <div className="mt-14 text-center bg-[#FDF9F4] border border-[rgba(27,20,15,0.08)] rounded-2xl py-10 px-6">
           <p className="font-[family-name:var(--font-display)] text-[20px] font-bold text-[#1B140F] mb-2">Still need help?</p>
           <p className="text-[15px] text-[rgba(27,20,15,0.55)] mb-6">Our support team responds within 4 hours on business days.</p>
-          <a href="/contact" className="inline-flex px-5 py-2.5 bg-[#C9542C] text-[#FDF9F4] font-semibold rounded-xl hover:bg-[#b84a24] transition-colors text-[14px]">
+          <a href="/contact" className="inline-flex px-5 py-2.5 bg-[#88E788] text-[#1B140F] font-semibold rounded-xl hover:bg-[#72d672] transition-colors text-[14px]">
             Contact support
           </a>
         </div>

@@ -2,7 +2,7 @@ export default function Terms() {
   return (
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[780px] mx-auto px-6 pt-20 pb-24">
-        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">Legal</p>
+        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Legal</p>
         <h1 className="font-[family-name:var(--font-display)] text-[42px] font-bold text-[#1B140F] tracking-tight mb-3">Terms of Service</h1>
         <p className="text-[14px] text-[rgba(27,20,15,0.45)] mb-12">Last updated: November 1, 2024</p>
 
@@ -46,7 +46,7 @@ export default function Terms() {
           <div className="mt-10 pt-8 border-t border-[rgba(27,20,15,0.08)]">
             <p className="text-[14px] text-[rgba(27,20,15,0.5)]">
               Questions about these terms? Contact us at{" "}
-              <a href="mailto:legal@usemitra.com" className="text-[#C9542C]">legal@usemitra.com</a>
+              <a href="mailto:legal@usemitra.com" className="text-[#1B2A4A]">legal@usemitra.com</a>
             </p>
           </div>
         </div>

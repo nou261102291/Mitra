@@ -17,7 +17,7 @@ export default function Integrations() {
   return (
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-16 text-center">
-        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">Integrations</p>
+        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Integrations</p>
         <h1 className="font-[family-name:var(--font-display)] text-[52px] md:text-[64px] font-bold text-[#1B140F] leading-[1.08] tracking-tight mb-6 max-w-[800px] mx-auto">
           Works where you already work.
         </h1>
@@ -41,7 +41,7 @@ export default function Integrations() {
                 className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"
                 style={
                   int.status === "live"
-                    ? { color: "#C9542C", background: "rgba(201,84,44,0.1)" }
+                    ? { color: "#1B2A4A", background: "rgba(136,231,136,0.22)" }
                     : { color: "rgba(27,20,15,0.4)", background: "rgba(27,20,15,0.06)" }
                 }
               >

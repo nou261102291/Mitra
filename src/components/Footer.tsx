@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { MitraIcon } from "./MitraLogo";
 
 const columns = [
   {
@@ -61,9 +62,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-[8px] bg-[#88E788] flex items-center justify-center">
-                <span className="text-[#1B140F] text-[12px] font-bold font-[family-name:var(--font-display)]">M</span>
-              </div>
+              <MitraIcon size={28} />
               <span className="text-[17px] font-bold font-[family-name:var(--font-display)]">Mitra</span>
             </div>
             <p className="text-[13px] text-[rgba(253,249,244,0.55)] leading-relaxed max-w-[180px]">

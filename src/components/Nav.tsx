@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router";
+import { MitraIcon } from "./MitraLogo";
 
 const productLinks = [
   { label: "How It Works", href: "/how-it-works" },
@@ -65,23 +66,6 @@ function Dropdown({ label, links }: { label: string; links: { label: string; hre
   );
 }
 
-function SignInTooltip() {
-  const [show, setShow] = useState(false);
-  return (
-    <div className="relative" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
-      <span className="text-[14px] font-medium text-[rgba(27,20,15,0.3)] cursor-default select-none">
-        Sign in
-      </span>
-      {show && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-[#1B2A4A] text-[#FDF9F4] text-[12px] font-medium rounded-lg whitespace-nowrap shadow-lg">
-          Coming soon
-          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1B2A4A]" />
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -95,9 +79,7 @@ export default function Nav() {
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-[10px] bg-[#88E788] flex items-center justify-center">
-            <span className="text-[#1B140F] text-[13px] font-bold font-[family-name:var(--font-display)]">M</span>
-          </div>
+          <MitraIcon size={32} />
           <span className="text-[18px] font-bold text-[#1B140F] font-[family-name:var(--font-display)] tracking-tight">
             Mitra
           </span>
@@ -116,9 +98,8 @@ export default function Nav() {
           <Dropdown label="Resources" links={resourceLinks} />
         </div>
 
-        {/* CTAs */}
-        <div className="hidden md:flex items-center gap-4">
-          <SignInTooltip />
+        {/* CTA */}
+        <div className="hidden md:flex items-center">
           <Link
             to="/download"
             className="px-4 py-2 bg-[#88E788] text-[#1B140F] text-[14px] font-semibold rounded-xl hover:bg-[#72d672] transition-colors shadow-sm"
@@ -166,7 +147,6 @@ export default function Nav() {
             <Link to="/pricing" className="py-2 text-[15px] text-[#1B140F]">Pricing</Link>
             <Link to="/enterprise" className="py-2 text-[15px] text-[#1B140F]">Enterprise</Link>
             <Link to="/blog" className="py-2 text-[15px] text-[#1B140F]">Blog</Link>
-            <span className="py-2 text-[15px] text-[rgba(27,20,15,0.3)]">Sign in (coming soon)</span>
             <Link to="/download" className="mt-2 px-4 py-3 bg-[#88E788] text-[#1B140F] text-[15px] font-semibold rounded-xl text-center">
               Download for free
             </Link>

@@ -13,7 +13,7 @@ export default function Contact() {
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-24 grid md:grid-cols-2 gap-16 items-start">
         <div>
-          <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">Contact</p>
+          <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Contact</p>
           <h1 className="font-[family-name:var(--font-display)] text-[48px] md:text-[58px] font-bold text-[#1B140F] leading-[1.1] tracking-tight mb-6">
             We're based in Lagos.<br />We respond quickly.
           </h1>
@@ -38,9 +38,9 @@ export default function Contact() {
         <div className="bg-[#FDF9F4] rounded-2xl border border-[rgba(27,20,15,0.1)] p-8">
           {sent ? (
             <div className="text-center py-14">
-              <div className="w-14 h-14 rounded-full bg-[rgba(201,84,44,0.1)] flex items-center justify-center mx-auto mb-4">
+              <div className="w-14 h-14 rounded-full bg-[rgba(136,231,136,0.18)] flex items-center justify-center mx-auto mb-4">
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-                  <path d="M5 13l6 6L21 7" stroke="#C9542C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 13l6 6L21 7" stroke="#1B2A4A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
               <p className="font-[family-name:var(--font-display)] text-[20px] font-bold text-[#1B140F] mb-2">Message sent</p>
@@ -61,7 +61,7 @@ export default function Contact() {
                     placeholder={f.placeholder}
                     value={form[f.id as keyof typeof form]}
                     onChange={(e) => setForm({ ...form, [f.id]: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] placeholder:text-[rgba(27,20,15,0.3)] focus:outline-none focus:border-[#C9542C] transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] placeholder:text-[rgba(27,20,15,0.3)] focus:outline-none focus:border-[#1B2A4A] transition-colors"
                     required
                   />
                 </div>
@@ -73,11 +73,11 @@ export default function Contact() {
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Tell us more..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] placeholder:text-[rgba(27,20,15,0.3)] focus:outline-none focus:border-[#C9542C] transition-colors resize-none"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] placeholder:text-[rgba(27,20,15,0.3)] focus:outline-none focus:border-[#1B2A4A] transition-colors resize-none"
                   required
                 />
               </div>
-              <button type="submit" className="w-full py-3 bg-[#C9542C] text-[#FDF9F4] font-semibold rounded-xl hover:bg-[#b84a24] transition-colors">
+              <button type="submit" className="w-full py-3 bg-[#88E788] text-[#1B140F] font-semibold rounded-xl hover:bg-[#72d672] transition-colors">
                 Send message
               </button>
             </form>

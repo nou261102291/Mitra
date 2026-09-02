@@ -14,7 +14,7 @@ export default function Enterprise() {
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-16 grid md:grid-cols-2 gap-16 items-start">
         <div>
-          <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">Enterprise</p>
+          <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Enterprise</p>
           <h1 className="font-[family-name:var(--font-display)] text-[48px] md:text-[58px] font-bold text-[#1B140F] leading-[1.1] tracking-tight mb-6">
             Built for teams that run Africa's biggest decisions.
           </h1>
@@ -44,9 +44,9 @@ export default function Enterprise() {
           <h2 className="font-[family-name:var(--font-display)] text-[24px] font-bold text-[#1B140F] mb-6">Talk to sales</h2>
           {sent ? (
             <div className="text-center py-12">
-              <div className="w-12 h-12 rounded-full bg-[rgba(201,84,44,0.1)] flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 rounded-full bg-[rgba(136,231,136,0.18)] flex items-center justify-center mx-auto mb-4">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12l5 5L19 7" stroke="#C9542C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 12l5 5L19 7" stroke="#1B2A4A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
               <p className="font-semibold text-[#1B140F]">Message received</p>
@@ -66,7 +66,7 @@ export default function Enterprise() {
                     placeholder={f.placeholder}
                     value={form[f.id as keyof typeof form]}
                     onChange={(e) => setForm({ ...form, [f.id]: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] placeholder:text-[rgba(27,20,15,0.3)] focus:outline-none focus:border-[#C9542C] transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] placeholder:text-[rgba(27,20,15,0.3)] focus:outline-none focus:border-[#1B2A4A] transition-colors"
                     required
                   />
                 </div>
@@ -76,7 +76,7 @@ export default function Enterprise() {
                 <select
                   value={form.size}
                   onChange={(e) => setForm({ ...form, size: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] focus:outline-none focus:border-[#C9542C] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] focus:outline-none focus:border-[#1B2A4A] transition-colors"
                   required
                 >
                   <option value="">Select size</option>
@@ -93,12 +93,12 @@ export default function Enterprise() {
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Tell us about your team's needs..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] placeholder:text-[rgba(27,20,15,0.3)] focus:outline-none focus:border-[#C9542C] transition-colors resize-none"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[rgba(27,20,15,0.15)] bg-[#FAF6F0] text-[#1B140F] text-[14px] placeholder:text-[rgba(27,20,15,0.3)] focus:outline-none focus:border-[#1B2A4A] transition-colors resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full py-3 bg-[#C9542C] text-[#FDF9F4] font-semibold rounded-xl hover:bg-[#b84a24] transition-colors mt-1"
+                className="w-full py-3 bg-[#88E788] text-[#1B140F] font-semibold rounded-xl hover:bg-[#72d672] transition-colors mt-1"
               >
                 Send message
               </button>
@@ -106,6 +106,8 @@ export default function Enterprise() {
           )}
         </div>
       </section>
+
+      <CTABand />
     </div>
   );
 }

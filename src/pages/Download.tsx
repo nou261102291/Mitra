@@ -2,7 +2,7 @@ export default function Download() {
   return (
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[900px] mx-auto px-6 pt-20 pb-24 text-center">
-        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">Download</p>
+        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Download</p>
         <h1 className="font-[family-name:var(--font-display)] text-[52px] md:text-[68px] font-bold text-[#1B140F] leading-[1.08] tracking-tight mb-6">
           Mitra is ready when you are.
         </h1>
@@ -23,7 +23,7 @@ export default function Download() {
               <p className="text-[13px] text-[rgba(27,20,15,0.5)] mb-6 flex-1">{p.req}</p>
               <a
                 href={p.href}
-                className="w-full text-center py-3 bg-[#C9542C] text-[#FDF9F4] font-semibold rounded-xl hover:bg-[#b84a24] transition-colors text-[14px]"
+                className="w-full text-center py-3 bg-[#88E788] text-[#1B140F] font-semibold rounded-xl hover:bg-[#72d672] transition-colors text-[14px]"
               >
                 Download for {p.platform}
               </a>

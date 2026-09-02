@@ -4,7 +4,7 @@ export default function Security() {
   return (
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[900px] mx-auto px-6 pt-20 pb-16">
-        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">Security & Privacy</p>
+        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Security & Privacy</p>
         <h1 className="font-[family-name:var(--font-display)] text-[48px] md:text-[60px] font-bold text-[#1B140F] leading-[1.1] tracking-tight mb-6">
           Your meetings. Your data.
         </h1>
