@@ -1,0 +1,10 @@
+{
+  "description": "Streamlines project planning by analyzing documents to clarify website requirements, ensuring efficient and accurate development for teams.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
