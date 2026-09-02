@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { BlogIllustration1, BlogIllustration2, BlogIllustration3 } from "../components/illustrations/BlogIllustrations";
 
 const posts = [
   {
@@ -9,7 +10,7 @@ const posts = [
     author: "Emeka Okafor",
     date: "Nov 8, 2024",
     readTime: "6 min",
-    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=360&fit=crop&auto=format",
+    Thumb: BlogIllustration1,
   },
   {
     slug: "follow-up-emails-that-close-deals",
@@ -19,7 +20,7 @@ const posts = [
     author: "Yewande Balogun",
     date: "Oct 29, 2024",
     readTime: "5 min",
-    img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=360&fit=crop&auto=format",
+    Thumb: BlogIllustration2,
   },
   {
     slug: "local-payments-why-matter",
@@ -29,7 +30,7 @@ const posts = [
     author: "Kofi Mensah",
     date: "Oct 14, 2024",
     readTime: "4 min",
-    img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=360&fit=crop&auto=format",
+    Thumb: BlogIllustration3,
   },
 ];
 
@@ -37,7 +38,7 @@ export default function Blog() {
   return (
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-12">
-        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">The Mitra Blog</p>
+        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">The Mitra Blog</p>
         <h1 className="font-[family-name:var(--font-display)] text-[52px] md:text-[64px] font-bold text-[#1B140F] leading-[1.08] tracking-tight">
           On meetings, business,<br />and building for Africa.
         </h1>
@@ -47,13 +48,11 @@ export default function Blog() {
         <div className="max-w-[1280px] mx-auto grid md:grid-cols-3 gap-7">
           {posts.map((post) => (
             <Link key={post.slug} to={`/blog/${post.slug}`} className="group flex flex-col">
-              <img
-                src={post.img}
-                alt={post.title}
-                className="w-full rounded-2xl aspect-video object-cover mb-5 bg-[rgba(27,20,15,0.05)] group-hover:opacity-90 transition-opacity"
-              />
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#C9542C] mb-2">{post.category}</span>
-              <h2 className="font-[family-name:var(--font-display)] text-[20px] font-bold text-[#1B140F] leading-snug mb-3 group-hover:text-[#C9542C] transition-colors">
+              <div className="w-full rounded-2xl overflow-hidden mb-5 bg-[rgba(27,20,15,0.04)]">
+                <post.Thumb />
+              </div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#1B2A4A] mb-2">{post.category}</span>
+              <h2 className="font-[family-name:var(--font-display)] text-[20px] font-bold text-[#1B140F] leading-snug mb-3 group-hover:text-[#1B2A4A] transition-colors">
                 {post.title}
               </h2>
               <p className="text-[14px] text-[rgba(27,20,15,0.6)] leading-relaxed mb-5 flex-1">{post.excerpt}</p>

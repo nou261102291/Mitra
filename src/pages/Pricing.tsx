@@ -83,7 +83,7 @@ function FAQ({ q, a }: { q: string; a: string }) {
     <div className="border-b border-[rgba(27,20,15,0.08)] last:border-0">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between py-5 text-left">
         <span className="text-[15px] font-semibold text-[#1B140F] pr-4">{q}</span>
-        <span className={`text-[#C9542C] text-[20px] font-light transition-transform shrink-0 ${open ? "rotate-45" : ""}`}>+</span>
+        <span className={`text-[#1B2A4A] text-[20px] font-light transition-transform shrink-0 ${open ? "rotate-45" : ""}`}>+</span>
       </button>
       {open && <p className="text-[14px] text-[rgba(27,20,15,0.65)] leading-relaxed pb-5">{a}</p>}
     </div>
@@ -96,7 +96,7 @@ export default function Pricing() {
   return (
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-16 text-center">
-        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">Pricing</p>
+        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Pricing</p>
         <h1 className="font-[family-name:var(--font-display)] text-[52px] md:text-[64px] font-bold text-[#1B140F] leading-[1.08] tracking-tight mb-6">
           Priced for Africa.<br />Paid the African way.
         </h1>
@@ -110,7 +110,7 @@ export default function Pricing() {
             <button
               key={c}
               onClick={() => setCurrency(c)}
-              className={`px-4 py-1.5 rounded-lg text-[13px] font-semibold transition-colors ${currency === c ? "bg-[#1B2A4A] text-[#FDF9F4]" : "text-[rgba(27,20,15,0.5)] hover:text-[#1B140F]"}`}
+              className={`px-4 py-1.5 rounded-lg text-[13px] font-semibold transition-colors ${currency === c ? "bg-[#88E788] text-[#1B140F]" : "text-[rgba(27,20,15,0.5)] hover:text-[#1B140F]"}`}
             >
               {c === "ngn" ? "₦ Naira" : "$ USD"}
             </button>
@@ -121,24 +121,32 @@ export default function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-2xl p-8 flex flex-col ${plan.primary ? "bg-[#1B2A4A] text-[#FDF9F4] ring-2 ring-[#C9542C] shadow-xl" : "bg-[#FDF9F4] border border-[rgba(27,20,15,0.1)]"}`}
+              className={`rounded-2xl p-8 flex flex-col ${
+                plan.primary
+                  ? "bg-[#88E788] ring-2 ring-[#88E788] shadow-xl shadow-[rgba(136,231,136,0.2)]"
+                  : "bg-[#FDF9F4] border border-[rgba(27,20,15,0.1)]"
+              }`}
             >
               {plan.primary && (
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#E8A94C] mb-4">Most popular</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#1B2A4A] mb-4">Most popular</span>
               )}
-              <p className={`text-[14px] font-bold uppercase tracking-wider mb-2 ${plan.primary ? "text-[rgba(253,249,244,0.55)]" : "text-[rgba(27,20,15,0.4)]"}`}>
+              <p className={`text-[14px] font-bold uppercase tracking-wider mb-2 ${plan.primary ? "text-[rgba(27,20,15,0.55)]" : "text-[rgba(27,20,15,0.4)]"}`}>
                 {plan.name}
               </p>
               <div className="mb-1">
-                <span className={`text-[40px] font-bold font-[family-name:var(--font-display)] ${plan.primary ? "text-[#FDF9F4]" : "text-[#1B140F]"}`}>
+                <span className={`text-[40px] font-bold font-[family-name:var(--font-display)] ${plan.primary ? "text-[#1B140F]" : "text-[#1B140F]"}`}>
                   {plan.price[currency]}
                 </span>
               </div>
-              <p className={`text-[13px] mb-2 ${plan.primary ? "text-[rgba(253,249,244,0.45)]" : "text-[rgba(27,20,15,0.4)]"}`}>{plan.period}</p>
-              <p className={`text-[14px] mb-7 leading-relaxed ${plan.primary ? "text-[rgba(253,249,244,0.7)]" : "text-[rgba(27,20,15,0.6)]"}`}>{plan.desc}</p>
+              <p className={`text-[13px] mb-2 ${plan.primary ? "text-[rgba(27,20,15,0.5)]" : "text-[rgba(27,20,15,0.4)]"}`}>{plan.period}</p>
+              <p className={`text-[14px] mb-7 leading-relaxed ${plan.primary ? "text-[rgba(27,20,15,0.7)]" : "text-[rgba(27,20,15,0.6)]"}`}>{plan.desc}</p>
               <Link
                 to={plan.ctaHref}
-                className={`w-full text-center py-3 rounded-xl font-semibold text-[15px] transition-colors mb-8 ${plan.primary ? "bg-[#C9542C] text-[#FDF9F4] hover:bg-[#b84a24]" : "border border-[rgba(27,20,15,0.2)] text-[#1B140F] hover:bg-[rgba(27,20,15,0.04)]"}`}
+                className={`w-full text-center py-3 rounded-xl font-semibold text-[15px] transition-colors mb-8 ${
+                  plan.primary
+                    ? "bg-[#1B2A4A] text-[#FDF9F4] hover:bg-[#162236]"
+                    : "border border-[rgba(27,20,15,0.2)] text-[#1B140F] hover:bg-[rgba(27,20,15,0.04)]"
+                }`}
               >
                 {plan.cta}
               </Link>
@@ -146,10 +154,10 @@ export default function Pricing() {
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-center gap-3">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="8" r="7" fill={plan.primary ? "rgba(232,169,76,0.25)" : "rgba(201,84,44,0.12)"}/>
-                      <path d="M5 8l2.5 2.5L11 5.5" stroke={plan.primary ? "#E8A94C" : "#C9542C"} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                      <circle cx="8" cy="8" r="7" fill={plan.primary ? "rgba(27,42,74,0.15)" : "rgba(136,231,136,0.2)"}/>
+                      <path d="M5 8l2.5 2.5L11 5.5" stroke={plan.primary ? "#1B2A4A" : "#1B140F"} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <span className={`text-[14px] ${plan.primary ? "text-[rgba(253,249,244,0.8)]" : "text-[#1B140F]"}`}>{f}</span>
+                    <span className={`text-[14px] ${plan.primary ? "text-[#1B140F]" : "text-[#1B140F]"}`}>{f}</span>
                   </li>
                 ))}
               </ul>

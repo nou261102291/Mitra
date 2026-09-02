@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router";
 import CTABand from "../components/CTABand";
+import { BeforeIllustration, DuringIllustration, AfterIllustration } from "../components/illustrations/UIIllustrations";
 
 const faqs = [
   {
@@ -34,19 +34,67 @@ function Accordion({ q, a }: { q: string; a: string }) {
         className="w-full flex items-center justify-between py-5 text-left"
       >
         <span className="text-[16px] font-semibold text-[#1B140F] pr-4">{q}</span>
-        <span className={`text-[#C9542C] text-[20px] font-light transition-transform shrink-0 ${open ? "rotate-45" : ""}`}>+</span>
+        <span className={`text-[#1B2A4A] text-[20px] font-light transition-transform shrink-0 ${open ? "rotate-45" : ""}`}>+</span>
       </button>
       {open && <p className="text-[15px] text-[rgba(27,20,15,0.65)] leading-relaxed pb-5">{a}</p>}
     </div>
   );
 }
 
+const stages = [
+  {
+    num: "01",
+    stage: "Before",
+    color: "#1B2A4A",
+    textColor: "#FDF9F4",
+    tagline: "Walks into every meeting already briefed",
+    desc: "Mitra syncs with Google Calendar and Outlook to understand your schedule. Before each meeting, it surfaces relevant context — past decisions, unresolved action items, who you'll be speaking with, and what was last discussed.",
+    points: [
+      "Calendar sync with Google and Outlook",
+      "Past meeting context automatically surfaced",
+      "Attendee intelligence from previous interactions",
+      "Pre-meeting brief delivered 10 minutes before start",
+    ],
+    Illustration: BeforeIllustration,
+  },
+  {
+    num: "02",
+    stage: "During",
+    color: "#88E788",
+    textColor: "#1B140F",
+    tagline: "Present with you, not instead of you",
+    desc: "No recording bot joins your call. Mitra runs locally on your device, capturing audio through your microphone and producing a live, structured transcript — decisions, action items, and key moments flagged in real time.",
+    points: [
+      "No bot visible to other call participants",
+      "Live structured transcription with speaker IDs",
+      "Real-time tagging of decisions and action items",
+      "Works on Zoom, Teams, Meet, and in-person",
+    ],
+    Illustration: DuringIllustration,
+  },
+  {
+    num: "03",
+    stage: "After",
+    color: "#E8A94C",
+    textColor: "#7a5010",
+    tagline: "Does the admin so you don't have to",
+    desc: "The moment the call ends, Mitra produces a clean summary, a list of action items with owners and deadlines, and a draft follow-up email — ready to send, or to edit and send. Meeting notes are searchable, linkable, and synced across your devices.",
+    points: [
+      "One-click meeting summary",
+      "Action items with owners and deadlines",
+      "Draft follow-up email, ready to send",
+      "Full searchable transcript archive",
+    ],
+    Illustration: AfterIllustration,
+  },
+];
+
 export default function HowItWorks() {
   return (
     <div className="bg-[#FAF6F0]">
       {/* Hero */}
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-16 text-center">
-        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">How Mitra works</p>
+        <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">How Mitra works</p>
         <h1 className="font-[family-name:var(--font-display)] text-[52px] md:text-[64px] font-bold text-[#1B140F] leading-[1.08] tracking-tight max-w-[800px] mx-auto mb-6">
           Your assistant is already in the room.
         </h1>
@@ -55,57 +103,17 @@ export default function HowItWorks() {
         </p>
       </section>
 
-      {/* Three stages — detailed */}
-      {[
-        {
-          num: "01",
-          stage: "Before",
-          color: "#C9542C",
-          tagline: "Walks into every meeting already briefed",
-          desc: "Mitra syncs with Google Calendar and Outlook to understand your schedule. Before each meeting, it surfaces relevant context — past decisions, unresolved action items, who you'll be speaking with, and what was last discussed.",
-          points: [
-            "Calendar sync with Google and Outlook",
-            "Past meeting context automatically surfaced",
-            "Attendee intelligence from previous interactions",
-            "Pre-meeting brief delivered 10 minutes before start",
-          ],
-          img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=420&fit=crop&auto=format",
-        },
-        {
-          num: "02",
-          stage: "During",
-          color: "#1B2A4A",
-          tagline: "Present with you, not instead of you",
-          desc: "No recording bot joins your call. Mitra runs locally on your device, capturing audio through your microphone and producing a live, structured transcript — decisions, action items, and key moments flagged in real time.",
-          points: [
-            "No bot visible to other call participants",
-            "Live structured transcription with speaker IDs",
-            "Real-time tagging of decisions and action items",
-            "Works on Zoom, Teams, Meet, and in-person",
-          ],
-          img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=640&h=420&fit=crop&auto=format",
-        },
-        {
-          num: "03",
-          stage: "After",
-          color: "#E8A94C",
-          tagline: "Does the admin so you don't have to",
-          desc: "The moment the call ends, Mitra produces a clean summary, a list of action items with owners and deadlines, and a draft follow-up email — ready to send, or to edit and send. Meeting notes are searchable, linkable, and synced across your devices.",
-          points: [
-            "One-click meeting summary",
-            "Action items with owners and deadlines",
-            "Draft follow-up email, ready to send",
-            "Full searchable transcript archive",
-          ],
-          img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=640&h=420&fit=crop&auto=format",
-        },
-      ].map((s, i) => (
+      {/* Three stages — with illustrations */}
+      {stages.map((s, i) => (
         <section key={s.stage} className={`py-20 px-6 ${i === 1 ? "bg-[#FDF9F4]" : ""}`}>
           <div className={`max-w-[1280px] mx-auto grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}>
             <div>
               <div
                 className="inline-block px-3 py-1.5 rounded-lg text-[12px] font-bold uppercase tracking-wider mb-6"
-                style={{ color: s.color, background: `${s.color}18` }}
+                style={{
+                  color: s.textColor,
+                  background: s.color === "#88E788" ? "rgba(136,231,136,0.2)" : s.color === "#E8A94C" ? "rgba(232,169,76,0.18)" : s.color,
+                }}
               >
                 {s.stage}
               </div>
@@ -116,9 +124,9 @@ export default function HowItWorks() {
               <ul className="flex flex-col gap-3">
                 {s.points.map((p) => (
                   <li key={p} className="flex items-start gap-3">
-                    <span className="w-5 h-5 rounded-full shrink-0 mt-0.5 flex items-center justify-center" style={{ background: `${s.color}20` }}>
+                    <span className="w-5 h-5 rounded-full shrink-0 mt-0.5 bg-[rgba(136,231,136,0.2)] flex items-center justify-center">
                       <svg width="10" height="10" viewBox="0 0 10 10">
-                        <path d="M2 5l2.5 2.5L8 3" stroke={s.color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M2 5l2.5 2.5L8 3" stroke="#1B2A4A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </span>
                     <span className="text-[15px] text-[#1B140F]">{p}</span>
@@ -126,14 +134,7 @@ export default function HowItWorks() {
                 ))}
               </ul>
             </div>
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-3xl opacity-30" style={{ background: `radial-gradient(ellipse at center, ${s.color}30, transparent 70%)` }} />
-              <img
-                src={s.img}
-                alt={`${s.stage} the meeting`}
-                className="relative rounded-2xl w-full object-cover aspect-[4/3] bg-[rgba(27,20,15,0.05)]"
-              />
-            </div>
+            <s.Illustration />
           </div>
         </section>
       ))}

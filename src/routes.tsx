@@ -17,6 +17,7 @@ import Blog from "./pages/Blog";
 import Help from "./pages/Help";
 import Contact from "./pages/Contact";
 import Download from "./pages/Download";
+import SignIn from "./pages/SignIn";
 import Terms from "./pages/legal/Terms";
 import Privacy from "./pages/legal/Privacy";
 import NotFound from "./pages/NotFound";
@@ -58,6 +59,7 @@ export const router = createBrowserRouter([
       { path: "help", Component: Help },
       { path: "contact", Component: Contact },
       { path: "download", Component: Download },
+      { path: "sign-in", Component: SignIn },
       { path: "legal/terms", Component: Terms },
       { path: "legal/privacy", Component: Privacy },
       { path: "*", Component: NotFound },

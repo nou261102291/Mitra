@@ -1,5 +1,11 @@
 import { Link } from "react-router";
 import CTABand from "../../components/CTABand";
+import {
+  FoundersIllustration,
+  SalesIllustration,
+  ConsultantsIllustration,
+  NGOIllustration,
+} from "../../components/illustrations/PersonaIllustrations";
 
 interface UseCaseConfig {
   role: string;
@@ -7,7 +13,7 @@ interface UseCaseConfig {
   subtext: string;
   pains: { pain: string; solution: string }[];
   testimonial: { quote: string; name: string; role: string; location: string };
-  img: string;
+  Illustration: React.ComponentType;
 }
 
 const configs: Record<string, UseCaseConfig> = {
@@ -26,7 +32,7 @@ const configs: Record<string, UseCaseConfig> = {
       role: "CEO, Recurra",
       location: "Lagos, Nigeria",
     },
-    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=440&fit=crop&auto=format",
+    Illustration: FoundersIllustration,
   },
   sales: {
     role: "Sales Teams",
@@ -43,7 +49,7 @@ const configs: Record<string, UseCaseConfig> = {
       role: "Head of Sales, ProcureNG",
       location: "Lagos, Nigeria",
     },
-    img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=640&h=440&fit=crop&auto=format",
+    Illustration: SalesIllustration,
   },
   consultants: {
     role: "Consultants & Agencies",
@@ -60,7 +66,7 @@ const configs: Record<string, UseCaseConfig> = {
       role: "Principal, Eze Advisory",
       location: "Port Harcourt, Nigeria",
     },
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=640&h=440&fit=crop&auto=format",
+    Illustration: ConsultantsIllustration,
   },
   ngo: {
     role: "NGOs & Development Orgs",
@@ -77,28 +83,29 @@ const configs: Record<string, UseCaseConfig> = {
       role: "Programme Director, AfriGrant Foundation",
       location: "Abuja, Nigeria",
     },
-    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=640&h=440&fit=crop&auto=format",
+    Illustration: NGOIllustration,
   },
 };
 
 export default function UseCasePage({ persona }: { persona: string }) {
   const config = configs[persona] ?? configs.founders;
+  const { Illustration } = config;
 
   return (
     <div className="bg-[#FAF6F0]">
       {/* Hero */}
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-16 grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="text-[12px] font-semibold uppercase tracking-widest text-[#C9542C] mb-4">{config.role}</p>
+          <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">{config.role}</p>
           <h1 className="font-[family-name:var(--font-display)] text-[48px] md:text-[58px] font-bold text-[#1B140F] leading-[1.1] tracking-tight mb-6">
             {config.headline}
           </h1>
           <p className="text-[17px] text-[rgba(27,20,15,0.65)] leading-relaxed mb-8">{config.subtext}</p>
-          <a href="/download" className="inline-flex px-6 py-3.5 bg-[#C9542C] text-[#FDF9F4] font-semibold rounded-xl hover:bg-[#b84a24] transition-colors">
+          <Link to="/download" className="inline-flex px-6 py-3.5 bg-[#88E788] text-[#1B140F] font-semibold rounded-xl hover:bg-[#72d672] transition-colors">
             Download for free
-          </a>
+          </Link>
         </div>
-        <img src={config.img} alt={config.role} className="rounded-2xl w-full object-cover aspect-[4/3] bg-[rgba(27,20,15,0.05)]" />
+        <Illustration />
       </section>
 
       {/* Pain → solution */}
@@ -114,8 +121,8 @@ export default function UseCasePage({ persona }: { persona: string }) {
                   <p className="text-[13px] font-semibold uppercase tracking-wider text-[rgba(27,20,15,0.35)] mb-2">The problem</p>
                   <p className="text-[16px] text-[#1B140F]">{p.pain}</p>
                 </div>
-                <div className="bg-[rgba(201,84,44,0.05)] rounded-2xl p-6 border border-[rgba(201,84,44,0.12)]">
-                  <p className="text-[13px] font-semibold uppercase tracking-wider text-[#C9542C] mb-2">Mitra's answer</p>
+                <div className="bg-[rgba(136,231,136,0.08)] rounded-2xl p-6 border border-[rgba(136,231,136,0.25)]">
+                  <p className="text-[13px] font-semibold uppercase tracking-wider text-[#1B2A4A] mb-2">Mitra's answer</p>
                   <p className="text-[16px] text-[#1B140F]">{p.solution}</p>
                 </div>
               </div>
@@ -130,7 +137,7 @@ export default function UseCasePage({ persona }: { persona: string }) {
           <p className="font-[family-name:var(--font-serif)] text-[22px] italic text-[#1B140F] leading-relaxed mb-6">
             "{config.testimonial.quote}"
           </p>
-          <div className="w-8 h-px bg-[#C9542C] mx-auto mb-4" />
+          <div className="w-8 h-px bg-[#88E788] mx-auto mb-4" />
           <p className="text-[14px] font-semibold text-[#1B140F]">{config.testimonial.name}</p>
           <p className="text-[13px] text-[rgba(27,20,15,0.5)]">{config.testimonial.role}</p>
           <p className="text-[12px] text-[rgba(27,20,15,0.35)] mt-0.5">{config.testimonial.location}</p>

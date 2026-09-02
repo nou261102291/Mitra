@@ -37,14 +37,11 @@ function Dropdown({ label, links }: { label: string; links: { label: string; hre
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1 text-[15px] font-medium text-[#1B140F] hover:text-[#C9542C] transition-colors"
+        className="flex items-center gap-1 text-[15px] font-medium text-[#1B140F] hover:text-[#1B2A4A] transition-colors"
       >
         {label}
         <svg
-          width="14"
-          height="14"
-          viewBox="0 0 14 14"
-          fill="none"
+          width="14" height="14" viewBox="0 0 14 14" fill="none"
           className={`transition-transform ${open ? "rotate-180" : ""}`}
         >
           <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,11 +54,28 @@ function Dropdown({ label, links }: { label: string; links: { label: string; hre
               key={link.href}
               to={link.href}
               onClick={() => setOpen(false)}
-              className="block px-4 py-2.5 text-[14px] text-[#1B140F] hover:bg-[rgba(201,84,44,0.06)] hover:text-[#C9542C] transition-colors"
+              className="block px-4 py-2.5 text-[14px] text-[#1B140F] hover:bg-[rgba(136,231,136,0.12)] hover:text-[#1B140F] transition-colors"
             >
               {link.label}
             </Link>
           ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SignInTooltip() {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="relative" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+      <span className="text-[14px] font-medium text-[rgba(27,20,15,0.3)] cursor-default select-none">
+        Sign in
+      </span>
+      {show && (
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-[#1B2A4A] text-[#FDF9F4] text-[12px] font-medium rounded-lg whitespace-nowrap shadow-lg">
+          Coming soon
+          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1B2A4A]" />
         </div>
       )}
     </div>
@@ -81,8 +95,8 @@ export default function Nav() {
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-[10px] bg-[#C9542C] flex items-center justify-center">
-            <span className="text-[#FDF9F4] text-[13px] font-bold font-[family-name:var(--font-display)]">M</span>
+          <div className="w-8 h-8 rounded-[10px] bg-[#88E788] flex items-center justify-center">
+            <span className="text-[#1B140F] text-[13px] font-bold font-[family-name:var(--font-display)]">M</span>
           </div>
           <span className="text-[18px] font-bold text-[#1B140F] font-[family-name:var(--font-display)] tracking-tight">
             Mitra
@@ -93,10 +107,10 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-7">
           <Dropdown label="Product" links={productLinks} />
           <Dropdown label="Use Cases" links={useCaseLinks} />
-          <Link to="/pricing" className="text-[15px] font-medium text-[#1B140F] hover:text-[#C9542C] transition-colors">
+          <Link to="/pricing" className="text-[15px] font-medium text-[#1B140F] hover:text-[#1B2A4A] transition-colors">
             Pricing
           </Link>
-          <Link to="/enterprise" className="text-[15px] font-medium text-[#1B140F] hover:text-[#C9542C] transition-colors">
+          <Link to="/enterprise" className="text-[15px] font-medium text-[#1B140F] hover:text-[#1B2A4A] transition-colors">
             Enterprise
           </Link>
           <Dropdown label="Resources" links={resourceLinks} />
@@ -104,12 +118,10 @@ export default function Nav() {
 
         {/* CTAs */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/sign-in" className="text-[14px] font-medium text-[rgba(27,20,15,0.6)] hover:text-[#1B140F] transition-colors">
-            Sign in
-          </Link>
+          <SignInTooltip />
           <Link
             to="/download"
-            className="px-4 py-2 bg-[#C9542C] text-[#FDF9F4] text-[14px] font-semibold rounded-xl hover:bg-[#b84a24] transition-colors shadow-sm"
+            className="px-4 py-2 bg-[#88E788] text-[#1B140F] text-[14px] font-semibold rounded-xl hover:bg-[#72d672] transition-colors shadow-sm"
           >
             Download for free
           </Link>
@@ -140,13 +152,13 @@ export default function Nav() {
         <div className="md:hidden bg-[#FDF9F4] border-t border-[rgba(27,20,15,0.08)] px-6 py-4 flex flex-col gap-1">
           <p className="text-[11px] font-semibold uppercase tracking-widest text-[rgba(27,20,15,0.4)] pt-2 pb-1">Product</p>
           {productLinks.map((l) => (
-            <Link key={l.href} to={l.href} className="py-2 text-[15px] text-[#1B140F] hover:text-[#C9542C] transition-colors">
+            <Link key={l.href} to={l.href} className="py-2 text-[15px] text-[#1B140F] hover:text-[#1B2A4A] transition-colors">
               {l.label}
             </Link>
           ))}
           <p className="text-[11px] font-semibold uppercase tracking-widest text-[rgba(27,20,15,0.4)] pt-3 pb-1">Use Cases</p>
           {useCaseLinks.map((l) => (
-            <Link key={l.href} to={l.href} className="py-2 text-[15px] text-[#1B140F] hover:text-[#C9542C] transition-colors">
+            <Link key={l.href} to={l.href} className="py-2 text-[15px] text-[#1B140F] hover:text-[#1B2A4A] transition-colors">
               {l.label}
             </Link>
           ))}
@@ -154,8 +166,8 @@ export default function Nav() {
             <Link to="/pricing" className="py-2 text-[15px] text-[#1B140F]">Pricing</Link>
             <Link to="/enterprise" className="py-2 text-[15px] text-[#1B140F]">Enterprise</Link>
             <Link to="/blog" className="py-2 text-[15px] text-[#1B140F]">Blog</Link>
-            <Link to="/sign-in" className="py-2 text-[15px] text-[rgba(27,20,15,0.6)]">Sign in</Link>
-            <Link to="/download" className="mt-2 px-4 py-3 bg-[#C9542C] text-[#FDF9F4] text-[15px] font-semibold rounded-xl text-center">
+            <span className="py-2 text-[15px] text-[rgba(27,20,15,0.3)]">Sign in (coming soon)</span>
+            <Link to="/download" className="mt-2 px-4 py-3 bg-[#88E788] text-[#1B140F] text-[15px] font-semibold rounded-xl text-center">
               Download for free
             </Link>
           </div>

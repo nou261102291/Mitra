@@ -50,32 +50,31 @@ const columns = [
 ];
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="bg-[#1B2A4A] text-[#FDF9F4]">
-      {/* Geometric accent line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#E8A94C]/40 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#88E788]/30 to-transparent" />
 
       <div className="max-w-[1280px] mx-auto px-6 pt-16 pb-10">
-        {/* Top: logo + columns */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-14">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-[8px] bg-[#C9542C] flex items-center justify-center">
-                <span className="text-[#FDF9F4] text-[12px] font-bold font-[family-name:var(--font-display)]">M</span>
+              <div className="w-7 h-7 rounded-[8px] bg-[#88E788] flex items-center justify-center">
+                <span className="text-[#1B140F] text-[12px] font-bold font-[family-name:var(--font-display)]">M</span>
               </div>
               <span className="text-[17px] font-bold font-[family-name:var(--font-display)]">Mitra</span>
             </div>
             <p className="text-[13px] text-[rgba(253,249,244,0.55)] leading-relaxed max-w-[180px]">
               The colleague who's always one step ahead of the room.
             </p>
-            {/* Social links */}
             <div className="flex gap-3 mt-5">
               {["𝕏", "in", "▶"].map((s, i) => (
                 <a
                   key={i}
                   href="#"
-                  className="w-8 h-8 rounded-lg border border-[rgba(253,249,244,0.15)] flex items-center justify-center text-[11px] text-[rgba(253,249,244,0.5)] hover:text-[#E8A94C] hover:border-[rgba(232,169,76,0.4)] transition-colors"
+                  className="w-8 h-8 rounded-lg border border-[rgba(253,249,244,0.15)] flex items-center justify-center text-[11px] text-[rgba(253,249,244,0.5)] hover:text-[#88E788] hover:border-[rgba(136,231,136,0.35)] transition-colors"
                 >
                   {s}
                 </a>
@@ -83,7 +82,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Nav columns */}
           {columns.map((col) => (
             <div key={col.title}>
               <p className="text-[11px] font-semibold uppercase tracking-widest text-[rgba(253,249,244,0.35)] mb-4">
@@ -94,7 +92,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-[14px] text-[rgba(253,249,244,0.65)] hover:text-[#FDF9F4] transition-colors"
+                      className="text-[14px] text-[rgba(253,249,244,0.65)] hover:text-[#88E788] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -105,13 +103,12 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-[rgba(253,249,244,0.1)] pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[13px] text-[rgba(253,249,244,0.35)]">
-            © 2024 Mitra Technologies Ltd. All rights reserved.
+            © {year} Mitra Technologies Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-[13px] text-[rgba(253,249,244,0.35)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E8A94C] inline-block" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#88E788] inline-block" />
             Made in Lagos, Nigeria
           </div>
         </div>

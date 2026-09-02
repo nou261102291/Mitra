@@ -6,13 +6,12 @@
 @theme inline {
   --color-sand: #FAF6F0;
   --color-ink: #1B140F;
-  --color-terracotta: #C9542C;
+  --color-mint: #88E788;
   --color-indigo: #1B2A4A;
   --color-ochre: #E8A94C;
   --color-cream: #FDF9F4;
   --color-ink-muted: rgba(27, 20, 15, 0.55);
   --color-ink-border: rgba(27, 20, 15, 0.12);
-  --color-indigo-light: rgba(27, 42, 74, 0.08);
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-serif: 'Fraunces', serif;

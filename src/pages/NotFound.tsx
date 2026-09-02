@@ -2,8 +2,7 @@ import { Link } from "react-router";
 
 export default function NotFound() {
   return (
-    <div className="bg-[#FAF6F0] min-h-[80vh] flex items-center justify-center px-6">
-      {/* Subtle geometric texture */}
+    <div className="bg-[#FAF6F0] min-h-[80vh] flex items-center justify-center px-6 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.025]" aria-hidden>
         <svg width="100%" height="100%">
           <defs>
@@ -19,7 +18,7 @@ export default function NotFound() {
       </div>
 
       <div className="relative text-center max-w-[500px]">
-        <p className="text-[120px] font-black font-[family-name:var(--font-display)] text-[rgba(27,20,15,0.06)] leading-none mb-0">
+        <p className="text-[120px] font-black font-[family-name:var(--font-display)] text-[rgba(27,20,15,0.06)] leading-none">
           404
         </p>
         <div className="-mt-8">
@@ -30,7 +29,7 @@ export default function NotFound() {
             The page you're looking for doesn't exist — or was moved. Let's get you back on track.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/" className="px-5 py-2.5 bg-[#C9542C] text-[#FDF9F4] font-semibold rounded-xl hover:bg-[#b84a24] transition-colors text-[14px]">
+            <Link to="/" className="px-5 py-2.5 bg-[#88E788] text-[#1B140F] font-semibold rounded-xl hover:bg-[#72d672] transition-colors text-[14px]">
               Back to home
             </Link>
             <Link to="/help" className="px-5 py-2.5 border border-[rgba(27,20,15,0.18)] text-[#1B140F] font-medium rounded-xl hover:bg-[rgba(27,20,15,0.04)] transition-colors text-[14px]">
