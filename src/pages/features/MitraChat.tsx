@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import CTABand from "../../components/CTABand";
 import ChatIllustration from "../../components/illustrations/ChatIllustration";
 
@@ -236,6 +237,27 @@ export default function MitraChat() {
           <p className="text-center text-[14px] text-[rgba(27,20,15,0.45)] mt-6 max-w-[600px] mx-auto leading-relaxed">
             Built to understand how Africa actually talks in meetings — not just how Silicon Valley does.
           </p>
+        </div>
+      </section>
+
+      {/* ── Lens crosslink ── */}
+      <section className="px-6 pb-12">
+        <div className="max-w-[840px] mx-auto">
+          <div className="bg-[#1B2A4A] rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-[#88E788] mb-1">Power users</p>
+              <p className="text-[15px] font-bold text-[#FDF9F4]">Save reusable views with Mitra Lens</p>
+              <p className="text-[13px] text-[rgba(253,249,244,0.55)] mt-0.5">
+                Type <span className="font-mono font-semibold text-[rgba(136,231,136,0.8)]">/lens</span> to apply a saved viewpoint to your entire meeting history — Board Lens, Oga Lens, Vendor Lens, and more.
+              </p>
+            </div>
+            <Link
+              to="/features/lens"
+              className="shrink-0 px-4 py-2.5 bg-[#88E788] text-[#1B140F] text-[13px] font-semibold rounded-xl hover:bg-[#72d672] transition-colors whitespace-nowrap"
+            >
+              Explore Lens →
+            </Link>
+          </div>
         </div>
       </section>
 
