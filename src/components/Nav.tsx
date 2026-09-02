@@ -6,6 +6,7 @@ const productLinks = [
   { label: "How It Works", href: "/how-it-works" },
   { label: "Meeting Assistant", href: "/features/meeting-assistant" },
   { label: "AI Notes & Follow-ups", href: "/features/ai-notes" },
+  { label: "Mitra Chat", href: "/features/mitra-chat" },
   { label: "Integrations", href: "/features/integrations" },
 ];
 
@@ -49,15 +50,18 @@ function Dropdown({ label, links }: { label: string; links: { label: string; hre
         </svg>
       </button>
       {open && (
-        <div className="absolute top-full left-0 mt-2 w-56 bg-[#FDF9F4] border border-[rgba(27,20,15,0.1)] rounded-xl shadow-lg shadow-[rgba(27,20,15,0.08)] py-2 z-50">
+        <div className="absolute top-full left-0 mt-2 w-60 bg-[#FDF9F4] border border-[rgba(27,20,15,0.1)] rounded-xl shadow-lg shadow-[rgba(27,20,15,0.08)] py-2 z-50">
           {links.map((link) => (
             <Link
               key={link.href}
               to={link.href}
               onClick={() => setOpen(false)}
-              className="block px-4 py-2.5 text-[14px] text-[#1B140F] hover:bg-[rgba(136,231,136,0.12)] hover:text-[#1B140F] transition-colors"
+              className="flex items-center justify-between px-4 py-2.5 text-[14px] text-[#1B140F] hover:bg-[rgba(136,231,136,0.12)] hover:text-[#1B140F] transition-colors"
             >
               {link.label}
+              {link.href === "/features/mitra-chat" && (
+                <span className="text-[9px] font-bold bg-[#88E788] text-[#1B140F] px-1.5 py-0.5 rounded-md">NEW</span>
+              )}
             </Link>
           ))}
         </div>

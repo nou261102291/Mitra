@@ -15,7 +15,7 @@ export default function Enterprise() {
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-16 grid md:grid-cols-2 gap-16 items-start">
         <div>
           <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Enterprise</p>
-          <h1 className="font-[family-name:var(--font-display)] text-[48px] md:text-[58px] font-bold text-[#1B140F] leading-[1.1] tracking-tight mb-6">
+          <h1 className="text-[48px] md:text-[58px] font-bold text-[#1B140F] leading-[1.1] tracking-tight mb-6" style={{ fontFamily: "'Fraunces', serif" }}>
             Built for teams that run Africa's biggest decisions.
           </h1>
           <p className="text-[17px] text-[rgba(27,20,15,0.65)] leading-relaxed mb-10">

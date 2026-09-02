@@ -7,6 +7,7 @@ import HowItWorks from "./pages/HowItWorks";
 import MeetingAssistant from "./pages/features/MeetingAssistant";
 import AiNotes from "./pages/features/AiNotes";
 import Integrations from "./pages/features/Integrations";
+import MitraChat from "./pages/features/MitraChat";
 import UseCasePage from "./pages/use-cases/UseCasePage";
 import Pricing from "./pages/Pricing";
 import Enterprise from "./pages/Enterprise";
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
       { path: "features/meeting-assistant", Component: MeetingAssistant },
       { path: "features/ai-notes", Component: AiNotes },
       { path: "features/integrations", Component: Integrations },
+      { path: "features/mitra-chat", Component: MitraChat },
       { path: "use-cases/founders", element: <UseCasePage persona="founders" /> },
       { path: "use-cases/sales", element: <UseCasePage persona="sales" /> },
       { path: "use-cases/consultants", element: <UseCasePage persona="consultants" /> },

@@ -97,7 +97,7 @@ export default function Pricing() {
     <div className="bg-[#FAF6F0]">
       <section className="max-w-[1280px] mx-auto px-6 pt-20 pb-16 text-center">
         <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B2A4A] mb-4">Pricing</p>
-        <h1 className="font-[family-name:var(--font-display)] text-[52px] md:text-[64px] font-bold text-[#1B140F] leading-[1.08] tracking-tight mb-6">
+        <h1 className="text-[52px] md:text-[64px] font-bold text-[#1B140F] leading-[1.08] tracking-tight mb-6" style={{ fontFamily: "'Fraunces', serif" }}>
           Priced for Africa.<br />Paid the African way.
         </h1>
         <p className="text-[17px] text-[rgba(27,20,15,0.6)] max-w-[480px] mx-auto mb-10 leading-relaxed">
